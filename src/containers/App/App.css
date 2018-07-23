@@ -1,9 +1,10 @@
-.row {
+.app-container {
+	margin : 1em 2em;
 	display : flex;
 }
 
-.grid {
-	
+.row {
+	display : flex;
 }
 
 .cell {
@@ -12,7 +13,7 @@
 	padding : 0.5em 0.5em;
 	width : 0.3em;
 	height : 0.3em;
-	margin : 0.2em 0.2em;
+	margin : 0.1em 0.1em;
 }
 
 .cell.dead {

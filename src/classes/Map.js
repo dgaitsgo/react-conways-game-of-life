@@ -1,4 +1,4 @@
-import { headsOrTails } from './random'
+import { headsOrTails } from 'utility/random'
 import Cell from './Cell'
 
 class Map {
@@ -6,6 +6,8 @@ class Map {
 	constructor(width, height) {
 		this.width = width
 		this.height = height
+		this.generation = 0
+		this.population = 0
 		this.cellMap = []
 	}
 
@@ -27,6 +29,30 @@ class Map {
 
 		return (this.cellMap[wrappedX][wrappedY])
 
+	}
+
+	calcNextGeneration = () => {
+
+		let nextWorld = new Map(this.width, this.height)
+		
+		for (let x = 0; x < this.width; x++) {
+
+			let row = []
+			for (let y = 0; y < this.height; y++) {
+
+				let currCell = this.cellMap[x][y]
+				let neighbors = this.getNeighbors(currCell)
+				let nextCell = currCell.determineFate(neighbors)
+
+				nextCell.alive && nextWorld.population++
+				row.push(nextCell)
+			}
+			nextWorld.cellMap.push(row)
+		}
+
+		nextWorld.generation = this.generation + 1
+
+		return (nextWorld)
 	}
 
 	newCellMap = (option) => {
