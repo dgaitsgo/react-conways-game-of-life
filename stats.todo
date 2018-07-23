@@ -1,0 +1,14 @@
+Counters : 
+Generations
+Time
+Population
+births
+
+aggregates:
+average life span
+
+bar chart : color distribution
+line plot : average life span
+pie chart : most common causes of death
+
+density heatmap
